@@ -14,16 +14,3 @@ mongoose.connect(MONGODB_URI2, {
     .then(db => console.log("BD Conectada"))
     .catch (error => console.error(error))
 
-// (async () => {
-//   try {
-//     const db = await mongoose.connect(config.MONGODB_URI, {
-//       useNewUrlParser: true,
-//       useUnifiedTopology: true,
-//       useFindAndModify: false,
-//       useCreateIndex: true,
-//     });
-//     console.log("Mongodb is connected to", db.connection.host);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// })();

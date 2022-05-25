@@ -16,6 +16,7 @@ const advancedOptions = {
 
 const Producto = require('./models/Producto')
 const Usuario = require('./models/Usuario')
+const { NAME, NAME_DATABASE, PASSWORD } = process.env
 
 // Inicializacion
 const app = express()
@@ -45,7 +46,7 @@ app.use(methodOverride('_method'))
 app.use(cookieParser())
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://luis:coderhouse@cluster0.9xnml.mongodb.net/ecommerce?retryWrites=true&w=majority',
+        mongoUrl: `mongodb+srv://${NAME}:${PASSWORD}@cluster0.9xnml.mongodb.net/${NAME_DATABASE}?retryWrites=true&w=majority`,
         mongoOptions: advancedOptions,
         ttl: 60
     }),
@@ -80,15 +81,13 @@ app.get('/productos', async (req, res) => {
   }
 })
 
-// app.get('/usuario/salir', (req, res) => {
-//     // req.session.destroy(err => {
-//     //     if(!err) res.redirect('/usuario/login')
-//     //     else res.send({status: 'Logout ERROR', body: err})
-//     // })
-//     req.logout()
-//     req.flash('mensaje', 'Session cerrada correctamente')
-//     res.redirect('/usuario/login')
-// })
+app.get('/usuario/salir', async (req, res) => {
+    const user = req.user
+    const usuario = await Usuario.findById(user).lean()
+    req.logout()
+    req.flash('mensaje', `Hasta Luego ${usuario.nombre}`)
+    res.redirect('/usuario/login')
+})
 
 
 // Rutas

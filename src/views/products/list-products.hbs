@@ -1,40 +1,4 @@
-{{!-- <div class="container mt-5">
-    <div class="container mb-4 text-center">
-        <h4>Lista de Producto</h2>
-    </div>    
-    <div class="container">
-      <table class="table table-striped">
-        <thead class="bg-dark bg-gradient text-white">
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Codigo</th>
-            <th scope="col">Image</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Stock</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#if productos.length }} 
-            {{#each productos}}
-              <tr>
-                <td class="col-md-2">{{nombre}}</td>
-                <td class="col-md-2">{{descripcion}}</td>
-                <td class="col-md-2">{{codigo}}</td>
-                <td class="col-md-2"><img style="width:45%" src={{imagen}}></td>
-                <td class="col-md-2">{{precio}}</td>
-                <td class="col-md-2">{{stock}}</td>
-              </tr>
-            {{/each}}
-          {{else}}
-            <tr>
-              <td colspan="5">No hay Productos</td>
-            </tr>
-          {{/if}}
-        </tbody>
-      </table>
-    </div>
-</div>  --}}
+
     <div class="containerNuevoProducto d-flex justify-content-end align-items-center">
       <a href="/producto">
         <button class="botonNuevo btn btn-outline-dark">
@@ -42,11 +6,11 @@
         </button>
       </a>
     </div>
-    {{!-- <div class="container">
-      {{#if usuario}}
-      <h3>Bienvenido {{usuario.email}}</h3>
-      {{/if}}
-    </div> --}}
+    {{#if usuario}}
+        <div class="container col-md-4">
+          <h3>Bienvenido <span>{{usuario.nombre}}</span></h3>
+        </div>
+    {{/if}}
     {{>messagesSuccess}}
     {{#each productos}}
         <div class="container d-flex justify-content-center align-items-center">

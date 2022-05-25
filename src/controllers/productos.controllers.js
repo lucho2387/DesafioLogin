@@ -24,17 +24,6 @@ try {
     }
 }
 
-productosCtrl.listProducts = async (req, res) => {
-    try {
-        const { email } = req.body
-        const productos = await Producto.find().lean()
-        // const  usuario = await Usuario.findById(email).lean()
-        res.render('products/list-products', { productos})
-    } catch (error) {
-        res.status(500).json(error)
-    }
-}
-
 productosCtrl.renderEditForm = async (req, res) => {
     const producto = await Producto.findById(req.params.id).lean()
     

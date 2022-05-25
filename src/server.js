@@ -15,6 +15,7 @@ const advancedOptions = {
 }
 
 const Producto = require('./models/Producto')
+const Usuario = require('./models/Usuario')
 
 // Inicializacion
 const app = express()
@@ -70,12 +71,13 @@ app.use((req, res, next) => {
 
 app.get('/productos', async (req, res) => {
   if(req.session){
+    const user = req.user
+    const usuario = await Usuario.findById(user).lean()
     const productos = await Producto.find().lean()
-    res.render('products/list-products', { productos})
+    res.render('products/list-products', {usuario, productos})
   }else {
-    res.redirect('/usuario/login')
+    res.render('/users/login')
   }
-  
 })
 
 // app.get('/usuario/salir', (req, res) => {

@@ -14,9 +14,6 @@ router.get('/producto', renderPorductoForm)
 
 router.post('/producto', createNewProduct)
 
-// Listado de Productos
-router.get('/productos', listProducts)
-
 // Actualizar Producto
 router.get('/:id', renderEditForm)
 

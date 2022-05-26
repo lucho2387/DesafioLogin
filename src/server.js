@@ -16,7 +16,7 @@ const advancedOptions = {
 
 const Producto = require('./models/Producto')
 const Usuario = require('./models/Usuario')
-const { isAuthenticatedLogin } = require('./middlewares/auth')
+const { isAuthenticated } = require('./middlewares/auth')
 const { NAME, NAME_DATABASE, PASSWORD } = process.env
 
 // Inicializacion
@@ -71,7 +71,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/productos',isAuthenticatedLogin, async (req, res) => {
+app.get('/productos',isAuthenticated, async (req, res) => {
     const user = req.user
     const usuario = await Usuario.findById(user).lean()
     const productos = await Producto.find().lean()

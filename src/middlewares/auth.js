@@ -5,7 +5,7 @@ auth.isAuthenticated = (req, res, next) => {
         
         return next()
     }
-    req.flash('error', 'No esta autorizado')
+    req.flash('error', 'Ruta no autorizada')
     res.redirect('/usuario/login')
 }
 

@@ -9,4 +9,12 @@ auth.isAuthenticated = (req, res, next) => {
     res.redirect('/usuario/login')
 }
 
+auth.isAuthenticatedLogin = (req, res, next) => {
+    if(req.isAuthenticated()) {
+        return next()
+    }
+    req.flash('error', 'El tiempo de session a expirado')
+    res.redirect('/usuario/login')
+}
+
 module.exports = auth

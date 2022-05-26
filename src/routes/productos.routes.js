@@ -10,16 +10,16 @@ const {
 } = require('../controllers/productos.controllers')
 
 // Nuevo producto
-router.get('/producto', renderPorductoForm)
+router.get('/producto',isAuthenticated, renderPorductoForm)
 
-router.post('/producto', createNewProduct)
+router.post('/producto',isAuthenticated, createNewProduct)
 
 // Actualizar Producto
-router.get('/:id', renderEditForm)
+router.get('/:id',isAuthenticated, renderEditForm)
 
-router.put('/:id', updateProduct)
+router.put('/:id',isAuthenticated, updateProduct)
 
 // Eliminar Productos
-router.delete('/:id', deleteProduct)
+router.delete('/:id',isAuthenticated, deleteProduct)
 
 module.exports = router

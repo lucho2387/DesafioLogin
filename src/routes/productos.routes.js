@@ -9,6 +9,8 @@ const {
         deleteProduct 
 } = require('../controllers/productos.controllers')
 
+const { isAuthenticated } = require('../middlewares/auth')
+
 // Nuevo producto
 router.get('/producto',isAuthenticated, renderPorductoForm)
 
